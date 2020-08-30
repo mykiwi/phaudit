@@ -48,7 +48,7 @@ jobs:
         name: Prepare release date
         id: release-date
         run: |
-          date=(date +"%y.%m")
+          date=$(date +"%y.%m")
           echo "::set-output name=name::$date"
 
       - name: Build and push Docker images
