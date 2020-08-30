@@ -33,9 +33,11 @@ jobs:
           buildx-version: latest
           qemu-version: latest
       -
-        name: Available platforms
-        run: echo ${{ steps.buildx.outputs.platforms }}
-      -
-        name: Run Buildx
+        name: docker build
         run: |
-          docker buildx build --tag=mykiwi/phaudit:${{ matrix.php-version }} --file=php${{ matrix.php-version }}.Dockerfile .
+          docker buildx build \
+            --label GIT_SHA=${{ github.sha }} \
+            --label GIT_REF=${{ github.ref }} \
+            --tag mykiwi/phaudit:${{ matrix.php-version }} \
+            --file php${{ matrix.php-version }}.Dockerfile \
+            .
