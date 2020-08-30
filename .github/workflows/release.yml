@@ -38,4 +38,4 @@ jobs:
       -
         name: Run Buildx
         run: |
-          docker buildx build -t mykiwi/phaudit:${{ matrix.php-version }}
+          docker buildx build --tag=mykiwi/phaudit:${{ matrix.php-version }} --file=php${{ matrix.php-version }}.Dockerfile .
