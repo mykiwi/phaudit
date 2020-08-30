@@ -13,13 +13,14 @@ on:
 jobs:
   builds:
     runs-on: ubuntu-latest
-    matrix:
-      php-versions:
-        - '70'
-        - '71'
-        # - '72'
-        # - '73'
-        # - '74'
+    strategy:
+      matrix:
+        php-versions:
+          - '70'
+          - '71'
+          # - '72'
+          # - '73'
+          # - '74'
     steps:
       -
         name: Checkout
