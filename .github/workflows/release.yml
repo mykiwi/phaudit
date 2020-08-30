@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions:
+        php-version:
           - '70'
           - '71'
           # - '72'
@@ -37,7 +37,5 @@ jobs:
         run: echo ${{ steps.buildx.outputs.platforms }}
       -
         name: Run Buildx
-        with:
-          php-version: ${{ matrix.php-versions }}
         run: |
           docker buildx build -t mykiwi/phaudit:${{ matrix.php-version }}
