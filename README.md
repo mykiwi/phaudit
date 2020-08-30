@@ -1,5 +1,7 @@
 # mykiwi/phaudit
 
+<img align="right" src="https://img.shields.io/docker/pulls/mykiwi/phaudit?style=flat-square" alt="docker pull stats" />
+
 > A simple Docker image to run some PHP quality assurance tools on your project.
 
 
