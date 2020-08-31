@@ -1,4 +1,4 @@
-<a href="https://hub.docker.com/r/mykiwi/phaudit/"><img align="right" src="https://img.shields.io/docker/pulls/mykiwi/phaudit?style=flat-square" alt="docker pull stats" /></a>
+<p><a href="https://hub.docker.com/r/mykiwi/phaudit/"><img align="right" src="https://img.shields.io/docker/pulls/mykiwi/phaudit?style=flat-square" alt="docker pull stats" clear="right"></a></p>
 
 # mykiwi/phaudit
 

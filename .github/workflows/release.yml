@@ -55,7 +55,7 @@ jobs:
         name: Prepare docker labels
         id: docker-labels
         run: |
-          labels="build-date=$(date --rfc-3339="seconds"),version=${{ matrix.php-version }}-${{ steps.release-date.outputs.name }},vsc-url=https://github.com/mykiwi/phaudit,vsc-ref=${{ github.ref }},vsc-sha=${{ github.sha }}"
+          labels="org.label-schema.schema-version=1.0,org.label-schema.build-date=$(date -u +"%Y-%m-%dT%H:%M:%SZ"),org.label-schema.name=mykiwi/phaudit,org.label-schema.version=${{ matrix.php-version }}-${{ steps.release-date.outputs.name }},org.label-schema.vsc-url=https://github.com/mykiwi/phaudit,org.label-schema.vsc-ref=${{ github.sha }}"
           echo "::set-output name=value::$labels"
     
       - name: Build and push Docker images
