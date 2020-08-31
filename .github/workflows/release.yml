@@ -51,13 +51,6 @@ jobs:
           date=$(date +"%y.%m")
           echo "::set-output name=name::$date"
 
-      -
-        name: Prepare docker labels
-        id: docker-labels
-        run: |
-          labels="org.label-schema.schema-version=1.0,org.label-schema.build-date=$(date -u +"%Y-%m-%dT%H:%M:%SZ"),org.label-schema.name=mykiwi/phaudit,org.label-schema.version=${{ matrix.php-version }}-${{ steps.release-date.outputs.name }},org.label-schema.vsc-url=https://github.com/mykiwi/phaudit,org.label-schema.vsc-ref=${{ github.sha }}"
-          echo "::set-output name=value::$labels"
-    
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
         with:
@@ -68,4 +61,4 @@ jobs:
           tags: ${{ matrix.php-version }}, ${{ matrix.php-version }}-${{ steps.release-date.outputs.name }}
 
           build_args: PHP_VERSION=${{ matrix.php-version }}
-          labels: ${{ steps.docker-labels.outputs.value }}
+          add_git_labels: true

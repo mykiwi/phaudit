@@ -1,6 +1,6 @@
-<p><a href="https://hub.docker.com/r/mykiwi/phaudit/"><img align="right" src="https://img.shields.io/docker/pulls/mykiwi/phaudit?style=flat-square" alt="docker pull stats" clear="right"></a></p>
-
 # mykiwi/phaudit
+
+<a href="https://hub.docker.com/r/mykiwi/phaudit/"><img align="right" src="https://img.shields.io/docker/pulls/mykiwi/phaudit?style=flat-square" alt="docker pull stats"></a>
 
 > A simple Docker image to run some PHP quality assurance tools on your project.
 
