@@ -56,7 +56,7 @@ jobs:
         id: docker-labels
         run: |
           build-date=$(date --rfc-3339="seconds")
-          labels=build-date=$build-date,version=${{ matrix.php-version }}-${{ steps.release-date.outputs.name }},vsc-url=https://github.com/mykiwi/phaudit,vsc-ref=${{ github.ref }},vsc-sha=${{ github.sha }}
+          labels="build-date=$build-date,version=${{ matrix.php-version }}-${{ steps.release-date.outputs.name }},vsc-url=https://github.com/mykiwi/phaudit,vsc-ref=${{ github.ref }},vsc-sha=${{ github.sha }}"
           echo "::set-output name=value::$labels"
     
       - name: Build and push Docker images
