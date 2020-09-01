@@ -61,8 +61,8 @@ jobs:
       -
         name: Push images on GitHub
         run: |
-          docker tag ${{ github.repository }}:${{ matrix.php-version }} docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}
-          docker tag ${{ github.repository }}:${{ matrix.php-version }} docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}-${{ steps.release-date.outputs.name }}
+          docker tag ${{ github.repository }}:${{ matrix.php-version }}-tmp docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}
+          docker tag ${{ github.repository }}:${{ matrix.php-version }}-tmp docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}-${{ steps.release-date.outputs.name }}
 
           # docker -h push docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}
           # docker -h push docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}-${{ steps.release-date.outputs.name }}
