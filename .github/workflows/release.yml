@@ -48,6 +48,13 @@ jobs:
           build_args: PHP_VERSION=${{ matrix.php-version }}
           add_git_labels: true
       -
+        name: Login to GitHub Packages Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
         name: debug
         run: |
           docker images
