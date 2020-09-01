@@ -32,33 +32,22 @@ jobs:
         with:
           buildx-version: latest
           qemu-version: latest
-      # -
-      #   name: Run Docker Buildx
-      #   run: |
-      #     docker buildx build \
-      #       --label SOURCE_CODE="github.com/mykiwi/phaudit" \
-      #       --label GIT_SHA=${{ github.sha }} \
-      #       --label GIT_REF=${{ github.ref }} \
-      #       --pull \
-      #       --tag mykiwi/phaudit:${{ matrix.php-version }} \
-      #       --file php${{ matrix.php-version }}.Dockerfile \
-      #       .
-
       -
         name: Prepare release date
         id: release-date
         run: |
           date=$(date +"%y.%m")
           echo "::set-output name=name::$date"
-
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
           repository: mykiwi/phaudit-tmp
           tags: ${{ matrix.php-version }}, ${{ matrix.php-version }}-${{ steps.release-date.outputs.name }}
-
           build_args: PHP_VERSION=${{ matrix.php-version }}
           add_git_labels: true
+      -
+        name: debug
+        run: |
+          docker images
