@@ -43,7 +43,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: mykiwi/phaudit-tmp
+          repository: ${{ github.repository }}-tmp
           tags: ${{ matrix.php-version }}, ${{ matrix.php-version }}-${{ steps.release-date.outputs.name }}
           build_args: PHP_VERSION=${{ matrix.php-version }}
           add_git_labels: true
@@ -54,6 +54,14 @@ jobs:
           registry: docker.pkg.github.com
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Push images on GitHub
+        run: |
+          docker tags ${{ github.repository }}:${{ matrix.php-version }} docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}
+          docker tags ${{ github.repository }}:${{ matrix.php-version }} docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}-${{ steps.release-date.outputs.name }}
+
+          # docker -h push docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}
+          # docker -h push docker.pkg.github.com/${{ github.repository }}:${{ matrix.php-version }}-${{ steps.release-date.outputs.name }}
       -
         name: debug
         run: |
